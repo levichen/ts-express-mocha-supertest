@@ -17,8 +17,11 @@ describe("Super Test", () => {
       .expect("Content-type", /json/)
       .expect(200)
       .end((error, res) => {
+        let a: string = "error";
 
         expect(res.status).to.equal(200);
+        expect(res.body).have.property(a);
+        expect(res.body).have.property("message");
         expect(res.body.error).to.equal(false);
 
         done();

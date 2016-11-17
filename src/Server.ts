@@ -2,6 +2,8 @@
 import * as bodyParser from "body-parser";
 import * as express from "express";
 
+import { IResponse } from "./IResponse";
+
 export default class Server {
   private app: express.Application;
   private router: express.Router;
@@ -23,7 +25,10 @@ export default class Server {
 
   private Route(): void {
     this.router.get("/", (req, res) => {
-      res.json({ error: false, message: "Hello"});
+
+      let response: IResponse = { error: false, message: "Hello"};
+
+      res.json(response);
     });
 
     this.router.post("/add", (req, res) => {
