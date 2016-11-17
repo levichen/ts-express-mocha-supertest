@@ -1,13 +1,18 @@
 
 import * as chai from "chai";
-import * as supertest from "supertest";
+import * as express from "express";
+import * as request from "supertest";
 
-const server = supertest.agent("http://localhost:3000");
+import Server from "../src/Server";
+
 const expect = chai.expect;
+
+let server: Server = new Server();
+let app: express.Application = server.bootstrap();
 
 describe("Super Test", () => {
   it("expect return home page", (done) => {
-    server
+    request(app)
       .get("/")
       .expect("Content-type", /json/)
       .expect(200)
@@ -21,7 +26,7 @@ describe("Super Test", () => {
   });
 
   it("expect add two numbers", (done) => {
-    server
+    request(app)
       .post("/add")
       .send({ num1: 10, num2: 20})
       .expect("Content-type", /json/)
@@ -37,7 +42,7 @@ describe("Super Test", () => {
   });
 
   it("expect return HTTP 404", (done) => {
-    server
+    request(app)
       .get("/random")
       .expect("Content-type", /json/)
       .expect(404)
