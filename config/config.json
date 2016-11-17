@@ -1,0 +1,26 @@
+[
+  {
+    "NAME": "MWEB_G1",
+    "ELB_LIST": [
+      "Offical",
+      "webapi"
+    ],
+    "ELB_METRIC": [
+      "Latency",
+      "HTTP4XXs",
+      "HTTP5XXs"
+    ]
+  },
+  {
+    "NAME": "MWEB_G2",
+    "ELB_LIST": [
+      "service",
+      "appserver"
+    ],
+    "ELB_METRIC": [
+      "Latency",
+      "HTTP4XXs",
+      "HTTP5XXs"
+    ]
+  }
+]
